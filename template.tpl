@@ -244,31 +244,6 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "help": "Google Analytics 4 items standard"
-  },
-  {
-    "type": "SIMPLE_TABLE",
-    "name": "simpleTable1",
-    "displayName": "",
-    "simpleTableColumns": [
-      {
-        "defaultValue": "",
-        "displayName": "brand",
-        "name": "brand",
-        "type": "TEXT"
-      },
-      {
-        "defaultValue": "",
-        "displayName": "produkt type",
-        "name": "type",
-        "type": "TEXT"
-      },
-      {
-        "defaultValue": "",
-        "displayName": "Affiliate sats",
-        "name": "gruppe",
-        "type": "TEXT"
-      }
-    ]
   }
 ]
 
@@ -276,7 +251,7 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 //# HeyLink Client Side Template
-//# Last updated: 11Nov22@1530
+//# Last updated: 10Jan23@10843
 const parseUrl = require('parseUrl');
 const getUrl = require('getUrl');
 const logToConsole = require('logToConsole');
@@ -287,7 +262,6 @@ const encodeUri = require('encodeUri');
 const queryPermission = require('queryPermission');
 const sendPixel = require('sendPixel');
 const makeNumber = require('makeNumber');
-
 //--------------------------------------
 
 var expirationTime = data.cookieDays * 24 * 60 * 60;
@@ -321,11 +295,9 @@ if(getEvetName() == 'purchase') {
          debugLogger('[purchase] All GTM received data' + JSON.stringify(data));
          debugLogger('[purchase] items:' + data.items);
 
-         
-         // const items = JSON.parse(data.items);
          const items = data.items;
          
-          let orderItemsQuery = '';
+         let orderItemsQuery = '';
      
      for (var i = 0; i < items.length; i++) {
        var p = items[i];
@@ -364,8 +336,6 @@ if(getEvetName() == 'purchase') {
             //orderItems: order_items //TODO: Maybe To be implemented later, when the end-point starts supporting it
 		 };
          
-
-         
            debugLogger('[purchase] payload constructed');
 		   debugLogger('[purchase] payload: ' + JSON.stringify(payload) );
 		
@@ -383,7 +353,6 @@ if(getEvetName() == 'purchase') {
            endPointParams += '&orderCurrencyCode=' + payload.orderCurrencyCode;
            endPointParams += '&orderCouponCode=' + payload.orderCouponCode;
            endPointParams += '&hltid=' + payload.hltid;
-           
            
             
            let endPointUrl = apiUrl + encodeUri(endPointParams + orderItemsQuery);
