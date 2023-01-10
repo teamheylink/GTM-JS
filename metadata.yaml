@@ -1,5 +1,10 @@
 homepage: "https://www.heylink.com"
 documentation: "https://docs.heylink.com/inbound/tracking-guide"
 versions:
+ # Latest version
   - sha: 156b6b8d2c6a8db3760b514b4024d79108797494
-    changeNotes: Update removal of fields brand produkt type affiliate sats
+    changeNotes: |2
+      Remove of simple table fields.
+  # Older versions
+  - sha: 8f40b9a654af3aa83401bdb367e631827038f7b0
+    changeNotes: Adds eject button.  
